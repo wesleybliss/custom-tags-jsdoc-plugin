@@ -81,6 +81,10 @@ Initial creation.
 *https://github.com/nijikokun/minami*
 Great, minimal JSDoc template that I used a lot for debugging while creating this plugin.
 
+**Infer Module**
+*https://github.com/bennettbuchanan/inferModule-jsdoc-plugin*
+For inspiration on how to write a JSDoc plugin that doesn't suck.
+
 
 ## License
 
