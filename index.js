@@ -5,7 +5,7 @@ var log = require('jsdoc/util/logger')
 var config = env.conf.api || {};
 
 
-var getDefaultOpts = function(tagName) {
+var getDefaultOpts = function(name) {
     return {
         mustHaveValue: false,
         canHaveType: false,
@@ -13,7 +13,7 @@ var getDefaultOpts = function(tagName) {
         isNamespace: false,
         onTagged: function(doclet, tag) {
             
-            doclet[tagName] = tag;
+            doclet[name] = tag;
             
             if (!doclet.meta) { doclet.meta = {}; }
             doclet.meta.partial = 'api-prop.tmpl';
@@ -26,15 +26,15 @@ if (!config.tags || config.tags.length < 1)
     throw new Error('Option config.tags is required');
 
 config.tags.map( t => {
-    if (!t.tag || !t.label) throw new Error('Missing label for tag ' + t.tag);
-    if (!t.opts) t.opts = getDefaultOpts(t.tag);
+    if (!t.name || !t.label) throw new Error('Missing name or label for tag ' + t.name);
+    if (!t.opts) t.opts = getDefaultOpts(t.name);
     return t;
 });
 
 exports.defineTags = function( dictionary ) {
     
     for ( var i in config.tags )
-        dictionary.defineTag( config.tags[i].tag, config.tags[i].opts );
+        dictionary.defineTag( config.tags[i].name, config.tags[i].opts );
     
 };
 
@@ -47,10 +47,12 @@ exports.handlers = {
             var dl = e.doclets[i];
             
             for ( var j in config.tags ) {
-                var tag = config.tags[j];
-                if ( dl[tag.tag] ) {
-                    dl[tag.tag] = ' <i>' + dl[tag.tag].value + '</i>';
-                }
+                
+                var name = config.tags[j].name;
+                
+                if ( dl[name] )
+                    dl[name] = ' <i>' + dl[name].value + '</i>';
+                
             }
             
         }

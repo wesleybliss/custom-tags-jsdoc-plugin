@@ -50,9 +50,9 @@ See the [JSDoc documentation](http://usejsdoc.org/about-plugins.html#tag-definit
     },
     "api": {
         "tags": [
-            { "tag": "endpoint", "label": "Endpoint:" },
-            { "tag": "requiresToken", "label": "Requires Token:" },
-            { "tag": "requiresAuth", "label": "Requires Authentication:" }
+            { "name": "endpoint", "label": "Endpoint:" },
+            { "name": "requiresToken", "label": "Requires Token:" },
+            { "name": "requiresAuth", "label": "Requires Authentication:" }
         ]
     }
 }
