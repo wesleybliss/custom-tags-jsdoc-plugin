@@ -11,6 +11,9 @@ This plugin lets you define arbitrary custom tags that will be included in your 
 $ cd /path/to/your-app-root
 $ npm i --save-dev https://github.com/wesleybliss/custom-tags-jsdoc-plugin.git
 ```
+### Dependencies
+
+You must use a template that supports arbitrary custom tags. For now, that's just my modified version of [Minami with arbitrary custom tags](https://github.com/wesleybliss/minami.git).
 
 
 ## Usage
