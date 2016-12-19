@@ -12,9 +12,8 @@ var getDefaultOpts = function(tagName) {
         canHaveName: false,
         isNamespace: false,
         onTagged: function(doclet, tag) {
-            //console.log(tag)
+            
             doclet[tagName] = tag;
-            //doclet[name] = JSON.stringify(tag);
             
             if (!doclet.meta) { doclet.meta = {}; }
             doclet.meta.partial = 'api-prop.tmpl';
@@ -26,16 +25,9 @@ var getDefaultOpts = function(tagName) {
 if (!config.tags || config.tags.length < 1)
     throw new Error('Option config.tags is required');
 
-/*if (!config.defaultOpts) {
-    log.warn('Option config.defaultOpts not provided - using sensible defaults');
-    config.defaultOpts = ;
-}*/
-
 config.tags.map( t => {
     if (!t.tag || !t.label) throw new Error('Missing label for tag ' + t.tag);
-    //if (t.tag !== t.tag.toLowerCase) throw new Error('Tags must be lowercase (' + t.tag + ')');
     if (!t.opts) t.opts = getDefaultOpts(t.tag);
-    console.log('tag', t.tag);
     return t;
 });
 
@@ -46,7 +38,6 @@ exports.defineTags = function( dictionary ) {
     
 };
 
-
 exports.handlers = {
     
     processingComplete: function(e) {
@@ -54,9 +45,6 @@ exports.handlers = {
         for (var i = 0; i < e.doclets.length; ++i) {
             
             var dl = e.doclets[i];
-            /*if (dl.endpoint) {
-                dl.endpoint += ' <i>(endpoint: ' + dl.endpoint + ')</i>';
-            }*/
             
             for ( var j in config.tags ) {
                 var tag = config.tags[j];
@@ -66,5 +54,7 @@ exports.handlers = {
             }
             
         }
+        
     }
+    
 };

@@ -15,7 +15,48 @@ $ npm i --save-dev https://github.com/wesleybliss/custom-tags-jsdoc-plugin.git
 
 ## Usage
 
-TODO: Write usage instructions
+Include the plugin, and specify your tags list in the `api` object.
+Each tag must have a name & label, and can have an optional settings object.
+See the [JSDoc documentation](http://usejsdoc.org/about-plugins.html#tag-definitions) for tag options.
+
+#### Example **.jsdoc.json**
+
+```json
+{
+    "tags": {
+        "allowUnknownTags": true,
+        "dictionaries": ["jsdoc"]
+    },
+    "source": {
+        "include": ["src", "package.json", "README.md"],
+        "includePattern": ".js$",
+        "excludePattern": "(node_modules/|docs)"
+    },
+    "plugins": [
+        "plugins/markdown",
+        "node_modules/custom-tags-jsdoc-plugin"
+    ],
+    "templates": {
+        "cleverLinks": false,
+        "monospaceLinks": true,
+        "useLongnameInNav": false
+    },
+    "opts": {
+        "destination": "./docs/",
+        "encoding": "utf8",
+        "private": true,
+        "recurse": true,
+        "template": "node_modules/minami"
+    },
+    "api": {
+        "tags": [
+            { "tag": "endpoint", "label": "Endpoint:" },
+            { "tag": "requiresToken", "label": "Requires Token:" },
+            { "tag": "requiresAuth", "label": "Requires Authentication:" }
+        ]
+    }
+}
+```
 
 
 ## Contributing
