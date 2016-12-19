@@ -1,0 +1,25 @@
+{
+  "name": "custom-tags-jsdoc-plugin",
+  "version": "1.0.0",
+  "description": "Add arbitrary custom tags to JSDoc blocks",
+  "main": "index.js",
+  "scripts": {
+    "test": "N/A"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wesleybliss/custom-tags-jsdoc-plugin.git"
+  },
+  "keywords": [
+    "jsdoc",
+    "plugin",
+    "custom",
+    "tags"
+  ],
+  "author": "Wesley Bliss <wesley.bliss@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wesleybliss/custom-tags-jsdoc-plugin/issues"
+  },
+  "homepage": "https://github.com/wesleybliss/custom-tags-jsdoc-plugin#readme"
+}
