@@ -18,7 +18,7 @@ You must use a template that supports arbitrary custom tags. For now, that's jus
 
 ## Usage
 
-Include the plugin, and specify your tags list in the `api` object.
+Include the plugin, and specify your tags list in the `custom` object.
 Each tag must have a name & label, and can have an optional settings object.
 See the [JSDoc documentation](http://usejsdoc.org/about-plugins.html#tag-definitions) for tag options.
 
@@ -51,7 +51,7 @@ See the [JSDoc documentation](http://usejsdoc.org/about-plugins.html#tag-definit
         "recurse": true,
         "template": "node_modules/minami"
     },
-    "api": {
+    "custom": {
         "tags": [
             { "name": "endpoint", "label": "Endpoint:" },
             { "name": "requiresToken", "label": "Requires Token:" },
