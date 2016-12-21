@@ -13,7 +13,28 @@ var getDefaultOpts = function(name) {
         isNamespace: false,
         onTagged: function(doclet, tag) {
             
-            doclet[name] = tag;
+            if (!doclet['custom']) doclet['custom'] = {};
+            if (!doclet['custom'][name]) doclet['custom'][name] = {};
+            
+            // Assign actual tag data to this tag name
+            doclet['custom'][name] = config.tags
+                .map(t => {
+                    
+                    // Not the tag we're looking for, so leave it alone
+                    if (t.name !== tag.originalTitle) return tag;
+                    
+                    // Remove tag opts - we don't need it for output
+                    var strippedTag = Object.assign({}, t);
+                    delete strippedTag.opts;
+                    
+                    // Copy JSDoc props to our custom props
+                    strippedTag = Object.assign(strippedTag, tag);
+                    
+                    return strippedTag;
+                    
+                })
+                .filter(t => t.name === tag.originalTitle)
+                .pop();
             
             if (!doclet.meta) { doclet.meta = {}; }
             doclet.meta.partial = 'api-prop.tmpl';
@@ -50,12 +71,19 @@ exports.handlers = {
                 
                 var name = config.tags[j].name;
                 
-                if ( dl[name] )
-                    dl[name] = ' <i>' + dl[name].value + '</i>';
+                if ( dl[name] ) {
+                    
+                    if (!dl['custom']) dl['custom'] = {};
+                    
+                    dl['custom'][name] = config.tags[j];
+                    
+                }
                 
             }
             
         }
+        
+        //if (!found) throw 'never found custom';
         
     }
     
