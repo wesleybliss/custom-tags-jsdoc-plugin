@@ -62,6 +62,11 @@ See the [JSDoc documentation](http://usejsdoc.org/about-plugins.html#tag-definit
 ```
 
 
+## Todo
+
+Add more config options for things like the section title.
+
+
 ## Contributing
 1. Fork it!
 2. Create your feature branch: `git checkout -b my-new-feature`
